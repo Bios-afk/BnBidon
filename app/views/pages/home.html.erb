@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>BnBidon</h1>
+<p>Le bidon qu'il vous faut</p>
+
+<% @flats.each do |flat| %>
+  <div class="flat">
+    <h2><%= flat.name %></h2>
+    <p><%= flat.address %></p>
+    <p>Price: <%= flat.price %> per night</p>
+    <p>Description: <%= flat.description %></p>
+    <img src="<%= flat.image_url %>" alt="<%= flat.name %> image" />
+  </div>
+<% end %>
