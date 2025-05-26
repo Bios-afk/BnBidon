@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "flats#home"
+  root to: "pages#home"
 
   resources :flats, expect: [:index], only: [:new, :create, :show] do
     resources :flat_reviews, only: [:create]
