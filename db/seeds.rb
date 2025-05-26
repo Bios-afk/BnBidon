@@ -33,16 +33,16 @@ puts "✅ Created #{User.count} users!"
 puts "🏠 Creating flats with real addresses around Bordeaux..."
 
 addresses = [
-  { address: "35 Rue Saint-Rémi, 33000 Bordeaux", lat: 44.841225, lon: -0.573424 },
-  { address: "21 Rue Judaïque, 33000 Bordeaux", lat: 44.837945, lon: -0.583974 },
-  { address: "1 Place de la Bourse, 33000 Bordeaux", lat: 44.841705, lon: -0.569932 },
-  { address: "Rue du Loup, 33000 Bordeaux", lat: 44.839777, lon: -0.574431 },
-  { address: "19 Cours Pasteur, 33000 Bordeaux", lat: 44.837141, lon: -0.576021 },
-  { address: "Rue Sainte-Catherine, 33000 Bordeaux", lat: 44.837768, lon: -0.575066 },
-  { address: "50 Quai Richelieu, 33000 Bordeaux", lat: 44.839722, lon: -0.567805 },
-  { address: "23 Rue Camille Godard, 33000 Bordeaux", lat: 44.851203, lon: -0.563470 },
-  { address: "Avenue des 40 Journaux, 33300 Bordeaux", lat: 44.869243, lon: -0.564225 },
-  { address: "2 Rue Charles Chaigneau, 33300 Bordeaux", lat: 44.872591, lon: -0.557944 }
+  { address: "35 Rue Saint-Rémi, 33000 Bordeaux" },
+  { address: "21 Rue Judaïque, 33000 Bordeaux" },
+  { address: "1 Place de la Bourse, 33000 Bordeaux" },
+  { address: "Rue du Loup, 33000 Bordeaux" },
+  { address: "19 Cours Pasteur, 33000 Bordeaux" },
+  { address: "Rue Sainte-Catherine, 33000 Bordeaux" },
+  { address: "50 Quai Richelieu, 33000 Bordeaux" },
+  { address: "23 Rue Camille Godard, 33000 Bordeaux" },
+  { address: "Avenue des 40 Journaux, 33300 Bordeaux" },
+  { address: "2 Rue Charles Chaigneau, 33300 Bordeaux" }
 ]
 
 addresses.each do |a|
@@ -51,8 +51,6 @@ addresses.each do |a|
     description: Faker::Lorem.paragraph(sentence_count: 2),
     address: a[:address],
     price: rand(60..250),
-    longitude: a[:lon],
-    lattitude: a[:lat],
     user: User.all.sample
   )
 end
@@ -60,7 +58,7 @@ puts "✅ Created #{Flat.count} flats!"
 
 # === BOOKINGS ===
 puts "📅 Creating bookings..."
-30.times do
+10.times do
   start_date = Faker::Date.forward(days: rand(3..15))
   end_date = start_date + rand(1..7)
 
