@@ -52,6 +52,7 @@ gem "sassc-rails"
 gem "devise"
 gem 'geocoder'
 gem 'faker'
+gem 'ostruct'
 
 group :development, :test do
   gem "dotenv-rails"
