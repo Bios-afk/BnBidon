@@ -1,0 +1,36 @@
+<div class="container">
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-inner" }) do |f| %>
+    <p class="title">Signin</p>
+    <p class="message">Welcome back! Please login to your account.</p>
+
+    <label>
+      <span>Email</span>
+      <%= f.input :email,
+                  required: true,
+                  label: false,
+                  input_html: { autocomplete: "email", placeholder: "", class: "input" } %>
+    </label>
+
+    <label>
+      <span>Password</span>
+      <%= f.input :password,
+                  required: true,
+                  label: false,
+                  input_html: { autocomplete: "current-password", placeholder: "", class: "input" } %>
+    </label>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group" style="display: flex; align-items: center; gap: 5px; margin-top: 10px;">
+        <%= f.input :remember_me,
+                    as: :boolean,
+                    label: "Remember me",
+                    inline_label: true %>
+      </div>
+    <% end %>
+    <%= f.button :submit, "Sign in", html: { class: "submit" }%>
+    <p class="signin">
+      Don't have an account?
+      <%= link_to "Register", new_registration_path(resource_name) %>
+    </p>
+  <% end %>
+</div>
