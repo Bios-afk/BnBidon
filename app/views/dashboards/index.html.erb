@@ -46,9 +46,28 @@
       </div>
     </div>
     <!-- 🚨 NOUVEAU : bouton Ajouter un logement -->
-    <!-- From Uiverse.io by satyamchaudharydev -->
-    <div class="d-flex justify-content-center mt-4">
-        <button class="custom-flat-button">Ajouter un logement</button>
-    </div>
+    <turbo-frame id="new_flat">
+      <div data-controller="toggle">
+        <!-- Bouton -->
+        <div class="text-center mt-4">
+          <button class="custom-flat-button" data-action="click->toggle#toggle">
+            Ajouter un logement
+          </button>
+        </div>
+
+        <!-- Formulaire masqué -->
+        <div data-toggle-target="form" class="d-none mt-4">
+          <%= simple_form_for Flat.new, url: flats_path, data: { turbo_frame: "new_flat" } do |f| %>
+            <div class="mb-3">
+              <%= f.input :name %>
+              <%= f.input :description %>
+              <%= f.input :address %>
+              <%= f.input :price %>
+            </div>
+            <%= f.button :submit, "Créer le logement", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </turbo-frame>
   </div>
 </div>
