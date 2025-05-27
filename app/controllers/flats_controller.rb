@@ -1,4 +1,7 @@
 class FlatsController < ApplicationController
+
+  skip_before_action :authenticate_user!, only: :show
+
   def create
     @flat = Flat.new(flat_params)
     @flat.user = current_user # si Flat appartient à un utilisateur
@@ -18,6 +21,7 @@ class FlatsController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
 
   def show
     @flat = Flat.find(params[:id])

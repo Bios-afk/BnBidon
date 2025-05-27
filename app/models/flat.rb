@@ -1,7 +1,8 @@
 class Flat < ApplicationRecord
-  has_one_attached :photo
   belongs_to :user
-  has_many :bookings
+
+  has_many :bookings, dependent: :destroy
+
   has_many :flat_reviews
 
   geocoded_by :address
