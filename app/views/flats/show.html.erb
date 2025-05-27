@@ -1,4 +1,4 @@
-<div class="container mt-5">
+<div class="container-show mt-5">
   <div class="row">
     <!-- Colonne gauche : Infos du logement -->
     <div class="col-md-7">
@@ -12,19 +12,37 @@
 
     <!-- Colonne droite : Formulaire de réservation -->
     <div class="col-md-5">
-      <div class="card shadow-sm rounded-4 p-4">
+      <div class="card shadow-sm rounded-4 p-4" data-controller="price">
         <h4 class="mb-3">Réserver</h4>
         <%= form_with url: flat_bookings_path(@flat), method: :post, local: true do |f| %>
           <div class="mb-3">
             <%= f.label :start_date, "Date d'arrivée", class: "form-label" %>
-            <%= f.date_field :start_date, class: "form-control", id: "start-date" %>
+            <%= f.date_field :start_date,
+                class: "form-control",
+                data: {
+                  price_target: "startDate",
+                  action: "input->price#updatePrice"
+                },
+                value: params.dig(:booking, :start_date) || "" %>
           </div>
           <div class="mb-3">
             <%= f.label :end_date, "Date de départ", class: "form-label" %>
-            <%= f.date_field :end_date, class: "form-control", id: "end-date" %>
+            <%= f.date_field :end_date,
+                class: "form-control",
+                data: {
+                  price_target: "endDate",
+                  action: "input->price#updatePrice"
+                },
+                value: params.dig(:booking, :end_date) || "" %>
           </div>
           <div class="mb-3">
-            <p><strong>Prix total :</strong> <span id="price-display"><%= @flat.price %></span> €</p>
+            <p><strong>Prix total :</strong>
+              <span
+                data-price-target="priceDisplay"
+                data-price="<%= @flat.price %>">
+                <%= @flat.price %>
+              </span> €
+            </p>
           </div>
           <%= f.hidden_field :flat_id, value: @flat.id %>
           <%= f.submit "Réserver", class: "btn btn-primary w-100" %>
@@ -33,28 +51,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const startDateInput = document.getElementById("start-date");
-    const endDateInput = document.getElementById("end-date");
-    const priceDisplay = document.getElementById("price-display");
-    const pricePerNight = <%= @flat.price %>;
-
-    function updatePrice() {
-      const start = new Date(startDateInput.value);
-      const end = new Date(endDateInput.value);
-
-      if (!isNaN(start) && !isNaN(end) && end > start) {
-        const diffDays = (end - start) / (1000 * 60 * 60 * 24);
-        const total = diffDays * pricePerNight;
-        priceDisplay.innerText = total;
-      } else {
-        priceDisplay.innerText = pricePerNight;
-      }
-    }
-
-    startDateInput.addEventListener("change", updatePrice);
-    endDateInput.addEventListener("change", updatePrice);
-  });
-</script>

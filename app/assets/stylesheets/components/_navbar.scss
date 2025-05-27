@@ -30,3 +30,7 @@
   background-color: white; // ou transparent avec un fond blur si besoin
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+body {
+  padding-top: 70px; // ajuste selon la hauteur de ta navbar
+}
