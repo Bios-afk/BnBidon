@@ -1,27 +1,35 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top shadow-sm">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "bidon-dessence.png", alt: "Logo", class: "logo" %>
+    <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+      <%= image_tag "bidon-dessence.png", alt: "Logo", class: "logo me-2", width: "30", height: "30" %>
+      <span class="fw-bold">BnBidon</span>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item active">
-          <%= link_to "Home", root_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%# lien vers Messages si besoin %>
-        </li>
-        <li class="nav-item dropdown">
-          <%# image/avatar utilisateur ici %>
-          <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-            <%# lien vers profil ou déconnexion %>
-          </div>
-        </li>
+      <ul class="navbar-nav ms-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+              <%= image_tag("https://kitt.lewagon.com/placeholder/users/default", class: "rounded-circle me-2", width: "30") %>
+              <%= current_user.name || current_user.email %>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li><%= link_to "Mon profil", user_path(current_user), class: "dropdown-item" %></li>
+              <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+            </ul>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Se connecter", new_user_session_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "S'inscrire", new_user_registration_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
