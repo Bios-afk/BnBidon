@@ -1,11 +1,19 @@
-<h1>BnBidon</h1>
-<p>Le bidon qu'il vous faut</p>
+<div class="container">
+  <h1 class="page-title">Logements populaires</h1>
 
-<% @flats.each do |flat| %>
-  <div class="flat">
-    <h2><%= flat.name %></h2>
-    <p><%= flat.address %></p>
-    <p>Price: <%= flat.price %> per night</p>
-    <p>Description: <%= flat.description %></p>
+  <div class="flats-grid">
+    <% @flats.each do |flat| %>
+      <div class="flat-card">
+        <% if flat.photo.attached? %>
+          <%= image_tag flat.photo, class: "flat-image" %>
+        <% end %>
+
+        <h2><%= flat.name %></h2>
+        <p class="address">📍 <%= flat.address %></p>
+        <p class="price">💰 <%= flat.price %> € / nuit</p>
+        <p class="description"><%= truncate(flat.description, length: 100) %></p>
+        <%= link_to "Voir ce logement", flat_path(flat), class: "btn-show" %>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
