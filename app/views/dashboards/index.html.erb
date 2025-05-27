@@ -1,0 +1,73 @@
+<!-- app/views/dashboards/index.html.erb -->
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+      <div class="card shadow-sm rounded-4 p-4">
+
+        <!-- Avatar -->
+        <div class="d-flex justify-content-center">
+          <div class="rounded-circle border border-2 border-light shadow-sm overflow-hidden" style="width: 130px; height: 130px;">
+            <img src="https://via.placeholder.com/150" class="w-100 h-100" style="object-fit: cover;" alt="Avatar de l'utilisateur">
+          </div>
+        </div>
+
+        <div class="mt-4 row align-items-center">
+
+          <!-- Nom -->
+          <div class="col-md-6">
+            <h2 class="h4 fw-semibold text-dark mb-0">
+              <%= @user.name %> <%= @user.last_name %>
+            </h2>
+          </div>
+
+          <!-- Statistiques -->
+          <div class="col-md-6 d-flex justify-content-md-end justify-content-between mt-3 mt-md-0">
+
+            <div class="text-center me-4">
+              <div class="fs-5 fw-bold text-primary">
+                <%= @bookings_count %>
+              </div>
+              <div class="text-muted small">Voyages</div>
+            </div>
+
+            <div class="text-center">
+              <div class="fs-5 fw-bold text-primary">
+                <%= @reviews_count %>
+              </div>
+              <div class="text-muted small">Notes reçues</div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+    <!-- 🚨 NOUVEAU : bouton Ajouter un logement -->
+    <turbo-frame id="new_flat">
+      <div data-controller="toggle">
+        <!-- Bouton -->
+        <div class="text-center mt-4">
+          <button class="custom-flat-button" data-action="click->toggle#toggle">
+            Ajouter un logement
+          </button>
+        </div>
+
+        <!-- Formulaire masqué -->
+        <div data-toggle-target="form" class="d-none mt-4">
+          <%= simple_form_for Flat.new, url: flats_path, data: { turbo_frame: "new_flat" } do |f| %>
+            <div class="mb-3">
+              <%= f.input :name %>
+              <%= f.input :description %>
+              <%= f.input :address %>
+              <%= f.input :price %>
+            </div>
+            <%= f.button :submit, "Créer le logement", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </turbo-frame>
+  </div>
+</div>
