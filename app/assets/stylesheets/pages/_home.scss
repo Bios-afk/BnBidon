@@ -1,1 +1,56 @@
 // Specific CSS for your home-page
+// Import page-specific CSS files here.
+.container-home {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cards-home {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.card-category {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  height: 180px;
+  color: white;
+  background-size: cover;
+  background-position: center;
+}
+
+.card-category:hover {
+  transform: scale(1.02);
+}
+
+.card-category.no-image {
+  background-color: #ffffff;
+}
+
+.card-category-content {
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.card-category-content h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.card-category-content p {
+  margin: 0.3rem 0;
+  font-size: 0.95rem;
+}

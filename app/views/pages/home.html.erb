@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-home">
   <h1 class="page-title">Logements populaires</h1>
 
-  <div class="cards">
+  <div class="cards-home">
     <% @flats.each do |flat| %>
       <%= link_to flat_path(flat), class: "flat-card" do %>
         <div class="flat-image" style="background-image: url('<%= cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) if flat.photos.attached?%>');">

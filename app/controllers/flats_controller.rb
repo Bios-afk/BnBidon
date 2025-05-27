@@ -1,5 +1,6 @@
 class FlatsController < ApplicationController
-
+  skip_before_action :authenticate_user!, only: [:index, :show]
+  
   def show
     @flat = Flat.find(params[:id])
   end
@@ -8,7 +9,7 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     @flat.photos.attach(params[:flat][:photos]) if params[:flat][:photos].present?
-    
+
     if @flat.save
       redirect_to dashboard_path, notice: "Logement ajouté."
       # respond_to do |format|
