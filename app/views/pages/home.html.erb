@@ -3,11 +3,13 @@
 
   <div class="cards">
     <% @flats.each do |flat| %>
-      <%= link_to flat_path(flat), class: "card-category no-image" do %>
-        <div class="card-category-content">
-          <h2><%= flat.name %></h2>
-          <p><%= flat.address %></p>
-          <p><strong><%= flat.price %> €</strong> / nuit</p>
+      <%= link_to flat_path(flat), class: "flat-card" do %>
+        <div class="flat-image" style="background-image: url('<%= cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) if flat.photos.attached?%>');">
+          <div class="flat-info">
+            <h2><%= flat.name %></h2>
+            <p><%= flat.address %></p>
+            <p><strong><%= flat.price %> €</strong> / nuit</p>
+          </div>
         </div>
       <% end %>
     <% end %>
