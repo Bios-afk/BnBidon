@@ -21,10 +21,10 @@ puts "✅ Database cleaned!"
 puts "👤 Creating users..."
 10.times do
   User.create!(
-    username: Faker::Internet.unique.username,
-    password: "password", # à remplacer par un système sécurisé en prod
+    email: Faker::Internet.unique.email,
     name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name
+    last_name: Faker::Name.last_name,
+    password: 'AZERTY'
   )
 end
 puts "✅ Created #{User.count} users!"
