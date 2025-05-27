@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     resources :flat_reviews, only: [:create]
     resources :bookings, only: [:new, :create]
   end
+
+  get 'dashboard', to: 'dashboards#index', as: 'dashboard'
 end

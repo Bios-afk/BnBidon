@@ -1,6 +1,10 @@
 class Flat < ApplicationRecord
   belongs_to :user
+
   has_many :bookings, dependent: :destroy
+
+  has_many :flat_reviews
+
   geocoded_by :address
 
   validates :name, presence: true
