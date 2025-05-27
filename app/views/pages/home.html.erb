@@ -1,19 +1,15 @@
 <div class="container">
   <h1 class="page-title">Logements populaires</h1>
 
-  <div class="flats-grid">
+  <div class="cards">
     <% @flats.each do |flat| %>
-      <div class="flat-card">
-        <% if flat.photo.attached? %>
-          <%= image_tag flat.photo, class: "flat-image" %>
-        <% end %>
-
-        <h2><%= flat.name %></h2>
-        <p class="address">📍 <%= flat.address %></p>
-        <p class="price">💰 <%= flat.price %> € / nuit</p>
-        <p class="description"><%= truncate(flat.description, length: 100) %></p>
-        <%= link_to "Voir ce logement", flat_path(flat), class: "btn-show" %>
-      </div>
+      <%= link_to flat_path(flat), class: "card-category no-image" do %>
+        <div class="card-category-content">
+          <h2><%= flat.name %></h2>
+          <p><%= flat.address %></p>
+          <p><strong><%= flat.price %> €</strong> / nuit</p>
+        </div>
+      <% end %>
     <% end %>
   </div>
 </div>

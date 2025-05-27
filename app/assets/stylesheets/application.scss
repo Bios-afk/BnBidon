@@ -10,3 +10,64 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card-category {
+  height: 240px;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.card-category:hover {
+  transform: scale(1.02);
+}
+
+.card-category-content {
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+.card-category-content h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.card-category-content p {
+  margin: 0.2rem 0;
+  font-size: 0.95rem;
+}
+
+body {
+  padding-top: 70px; // Ajuste selon la hauteur réelle de ta navbar
+}
+
+.navbar-lewagon {
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1030;
+}
