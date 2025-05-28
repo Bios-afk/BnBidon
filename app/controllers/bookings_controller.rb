@@ -20,7 +20,7 @@ before_action :authenticate_user!
     if @booking.save
       redirect_to flat_path(@flat), notice: "Réservation confirmée !"
     else
-      render "flats/show", status: :unprocessable_entity
+      redirect_to flats_path(@flat), status: :unprocessable_entity
     end
   end
 
