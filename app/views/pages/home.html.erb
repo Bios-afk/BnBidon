@@ -1,9 +1,9 @@
 <div class="container-home">
-  <div class="banner mb-5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.prismic.io/jr-website%2Fe9e1c15b-5c8d-4efd-8f28-65bf368698c0_header_fiche_project_imgs_2560x720.jpg?auto=compress,format);">
+  <div class="banner mb-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.prismic.io/jr-website%2Fe9e1c15b-5c8d-4efd-8f28-65bf368698c0_header_fiche_project_imgs_2560x720.jpg?auto=compress,format);">
     <h1 class="page-title">Logements populaires</h1>
      </div>
 </div>
-    <div class="row gap-4 justify-content-center">
+    <div class="row gap-4 justify-content-center mb-3">
       <% @flats.each do |flat| %>
         <%= link_to flat_path(flat), class: "card-home col-2 p-0" do %>
           <div class="card-category col-2", style="background-image: url('<%= cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) if flat.photos.attached?%>');">
