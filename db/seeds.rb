@@ -72,15 +72,15 @@ puts "✅ Created #{User.count} users!"
 # puts "✅ Created #{Booking.count} bookings!"
 
 # === REVIEWS ===
-puts "📝 Creating reviews..."
-40.times do
-  FlatReview.create!(
-    comment: Faker::Lorem.sentence(word_count: rand(6..12)),
-    rating: rand(1..5),
-    user: User.all.sample,
-    flat: Flat.all.sample
-  )
-end
-puts "✅ Created #{FlatReview.count} reviews!"
+# puts "📝 Creating reviews..."
+# 40.times do
+#   FlatReview.create!(
+#     comment: Faker::Lorem.sentence(word_count: rand(6..12)),
+#     rating: rand(1..5),
+#     user: User.all.sample,
+#     flat: Flat.all.sample
+#   )
+# end
+# puts "✅ Created #{FlatReview.count} reviews!"
 
 puts "🌱 Seeding completed with success!"
