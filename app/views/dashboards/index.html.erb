@@ -83,20 +83,18 @@
 
     <!-- ➕ Ajouter un logement : bouton et formulaire centrés -->
     <div class="col-lg-12 d-flex flex-column align-items-center">
-      <turbo-frame id="new_flat" class="form-wrapper">
-        <div data-controller="toggle">
-            <div class="text-center">
-            <button class="custom-flat-button" data-action="click->toggle#toggle">
-              + Add a new flat
-            </button>
-            </div>
-
-          <div data-toggle-target="form" class="d-none mt-3" id="flat-form">
-            <%= render partial: "flats/form", locals: {flat: Flat.new} %>
-          </div>
-
+      <div data-controller="toggle">
+        <div class="text-center">
+          <button class="custom-flat-button" data-action="click->toggle#toggle">
+            + Add a new flat
+          </button>
         </div>
-      </turbo-frame>
+
+        <div data-toggle-target="form" class="d-none mt-3" id="flat-form">
+          <%= render partial: "flats/form", locals: {flat: Flat.new} %>
+        </div>
+
+      </div>
     </div>
 
   </div>
