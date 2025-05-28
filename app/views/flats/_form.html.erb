@@ -1,0 +1,27 @@
+<%= turbo_frame_tag "new_flat" do %>
+  <%= simple_form_for flat, html: { multipart: true }, data: { turbo_frame: "new_flat" } do |f| %>
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :name %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :description %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :address %>
+      </div>
+      <div class="col-md-6">
+        <%= f.input :price %>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+    </div>
+
+    <%= f.button :submit, "Créer le logement", class: "btn btn-primary" %>
+  <% end %>
+<% end %>

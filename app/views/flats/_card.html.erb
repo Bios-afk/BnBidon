@@ -1,0 +1,15 @@
+
+<%= turbo_frame_tag "flat_#{flat.id}" do %>
+  <li class="mb-3">
+    <div class="flat-item d-flex justify-content-between align-items-start">
+      <div>
+        <h5 class="mb-1"><%= flat.name %></h5>
+        <p class="mb-0 text-muted"><%= flat.address %></p>
+      </div>
+      <div class="btn-group">
+        <%= link_to 'Modifier', edit_flat_path(flat), class: 'btn btn-sm btn-outline-primary', data: { turbo_frame: "flat_#{flat.id}" } %>
+        <%= link_to 'Supprimer', flat, data: { turbo_method: :delete, turbo_confirm: "Es-tu sûr ?" }, class: 'btn btn-sm btn-outline-danger' %>
+      </div>
+    </div>
+  </li>
+<% end %>

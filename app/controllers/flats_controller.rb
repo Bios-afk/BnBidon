@@ -13,7 +13,10 @@ class FlatsController < ApplicationController
     @flat.photos.attach(params[:flat][:photos]) if params[:flat][:photos].present?
 
     if @flat.save
-      redirect_to dashboard_path, notice: "Logement ajouté."
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to dashboard_path, notice: "Logement créé avec succès." }
+      end
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,7 +24,7 @@ class FlatsController < ApplicationController
 
   def destroy
     @flat = Flat.find(params[:id])
-    
+
     if @flat.destroy
       redirect_to dashboard_path, notice: "Logement supprimé."
     else
