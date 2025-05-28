@@ -14,7 +14,7 @@
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-              <%= image_tag("https://kitt.lewagon.com/placeholder/users/default", class: "rounded-circle me-2", width: "30") %>
+              <%= image_tag("https://kitt.lewagon.com/placeholder/users/default", class: "rounded-circle", width: "30") %>
               <%= current_user.name || current_user.email %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">

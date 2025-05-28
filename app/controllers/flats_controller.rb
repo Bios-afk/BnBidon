@@ -4,6 +4,7 @@ class FlatsController < ApplicationController
   def show
     @flat = Flat.find(params[:id])
     @photos = @flat.photos
+    @booking = Booking.new
   end
 
   def create

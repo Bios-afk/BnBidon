@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   root to: "pages#home"
 
   resources :flats, expect: [:index], only: [:new, :create, :show, :edit, :update, :destroy] do
+    resources :bookings, only: [:create]
     resources :flat_reviews, only: [:create]
-    resources :bookings, only: [:new, :create]
   end
 
   get 'dashboard', to: 'dashboards#index', as: 'dashboard'

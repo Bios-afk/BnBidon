@@ -1,3 +1,4 @@
+
 // This is where you override default Bootstrap variables
 // 1. Find all Bootstrap variables that you can override at the end of each component's documentation under the `Sass variables` anchor
 // e.g. here are the ones you can override for the navbar https://getbootstrap.com/docs/5.2/components/navbar/#sass-variables
@@ -12,7 +13,7 @@ $font-size-base:         1rem;
 
 // Colors
 $body-color: $gray;
-$primary:    $blue;
+$primary:    #28292a;
 $success:    $green;
 $info:       $yellow;
 $danger:     $red;
