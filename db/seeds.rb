@@ -29,47 +29,47 @@ puts "👤 Creating users..."
 end
 puts "✅ Created #{User.count} users!"
 
-# === FLATS (autour de Bordeaux) ===
-puts "🏠 Creating flats with real addresses around Bordeaux..."
+# # === FLATS (autour de Bordeaux) ===
+# puts "🏠 Creating flats with real addresses around Bordeaux..."
 
-addresses = [
-  { address: "35 Rue Saint-Rémi, 33000 Bordeaux" },
-  { address: "21 Rue Judaïque, 33000 Bordeaux" },
-  { address: "1 Place de la Bourse, 33000 Bordeaux" },
-  { address: "Rue du Loup, 33000 Bordeaux" },
-  { address: "19 Cours Pasteur, 33000 Bordeaux" },
-  { address: "Rue Sainte-Catherine, 33000 Bordeaux" },
-  { address: "50 Quai Richelieu, 33000 Bordeaux" },
-  { address: "23 Rue Camille Godard, 33000 Bordeaux" },
-  { address: "Avenue des 40 Journaux, 33300 Bordeaux" },
-  { address: "2 Rue Charles Chaigneau, 33300 Bordeaux" }
-]
+# addresses = [
+#   { address: "35 Rue Saint-Rémi, 33000 Bordeaux" },
+#   { address: "21 Rue Judaïque, 33000 Bordeaux" },
+#   { address: "1 Place de la Bourse, 33000 Bordeaux" },
+#   { address: "Rue du Loup, 33000 Bordeaux" },
+#   { address: "19 Cours Pasteur, 33000 Bordeaux" },
+#   { address: "Rue Sainte-Catherine, 33000 Bordeaux" },
+#   { address: "50 Quai Richelieu, 33000 Bordeaux" },
+#   { address: "23 Rue Camille Godard, 33000 Bordeaux" },
+#   { address: "Avenue des 40 Journaux, 33300 Bordeaux" },
+#   { address: "2 Rue Charles Chaigneau, 33300 Bordeaux" }
+# ]
 
-addresses.each do |a|
-  Flat.create!(
-    name: "#{Faker::Address.community} Apartment",
-    description: Faker::Lorem.paragraph(sentence_count: 2),
-    address: a[:address],
-    price: rand(60..250),
-    user: User.all.sample
-  )
-end
-puts "✅ Created #{Flat.count} flats!"
+# addresses.each do |a|
+#   Flat.create!(
+#     name: "#{Faker::Address.community} Apartment",
+#     description: Faker::Lorem.paragraph(sentence_count: 2),
+#     address: a[:address],
+#     price: rand(60..250),
+#     user: User.all.sample
+#   )
+# end
+# puts "✅ Created #{Flat.count} flats!"
 
-# === BOOKINGS ===
-puts "📅 Creating bookings..."
-10.times do
-  start_date = Faker::Date.forward(days: rand(3..15))
-  end_date = start_date + rand(1..7)
+# # === BOOKINGS ===
+# puts "📅 Creating bookings..."
+# 10.times do
+#   start_date = Faker::Date.forward(days: rand(3..15))
+#   end_date = start_date + rand(1..7)
 
-  Booking.create!(
-    start_date: start_date.to_time.to_i,
-    end_date: end_date.to_time.to_i,
-    user: User.all.sample,
-    flat: Flat.all.sample
-  )
-end
-puts "✅ Created #{Booking.count} bookings!"
+#   Booking.create!(
+#     start_date: start_date.to_time.to_i,
+#     end_date: end_date.to_time.to_i,
+#     user: User.all.sample,
+#     flat: Flat.all.sample
+#   )
+# end
+# puts "✅ Created #{Booking.count} bookings!"
 
 # === REVIEWS ===
 puts "📝 Creating reviews..."
