@@ -42,7 +42,7 @@
 }
 
 .card-category.no-image {
-  background-color: #ffffff;
+  background-color: $background-color;
 }
 
 .card-content {
@@ -54,17 +54,16 @@
   height: 60%;
   width: 100%;
   text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.6);
-}
-
-h2 {
+  h2 {
   font-size: 1.2rem;
   margin: 0;
-}
-
-p {
+  }
+  p {
   font-size: 0.95rem;
   margin: 0;
+  }
 }
+
 
 .banner {
   background-size: cover;
