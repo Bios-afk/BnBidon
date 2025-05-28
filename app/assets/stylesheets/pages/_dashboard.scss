@@ -1,1 +1,5 @@
 // Specific CSS for your dashboard-page
+.dashboard-card {
+  min-height: 300px; // hauteur minimale pour toutes les cards
+  height: 100%;
+}
