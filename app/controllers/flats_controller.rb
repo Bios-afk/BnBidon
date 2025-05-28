@@ -3,6 +3,7 @@ class FlatsController < ApplicationController
 
   def show
     @flat = Flat.find(params[:id])
+    @photos = @flat.photos
   end
 
   def create
@@ -12,16 +13,6 @@ class FlatsController < ApplicationController
 
     if @flat.save
       redirect_to dashboard_path, notice: "Logement ajouté."
-      # respond_to do |format|
-      #   format.turbo_stream do
-      #     render turbo_stream: turbo_stream.replace(
-      #       "new_flat",
-      #       partial: "flats/success",
-      #       locals: { flat: @flat }
-      #     )
-      #   end
-      #   format.html { redirect_to dashboard_path, notice: "Logement ajouté." }
-      # end
     else
       render :new, status: :unprocessable_entity
     end
