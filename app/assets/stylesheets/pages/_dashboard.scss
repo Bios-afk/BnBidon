@@ -1,5 +1,105 @@
-// Specific CSS for your dashboard-page
-.dashboard-card {
-  min-height: 300px; // hauteur minimale pour toutes les cards
+// Specific CSS for dashboard-page
+@import "../template.scss";
+
+.dashboard {
+  .dashboard-card {
+    padding: 2rem;
+    border-radius: $radius-md;
+    box-shadow: $shadow-md;
+    background-color: $background-color;
+    min-height: 200px;
+    height: 100%;
+  }
+
+  .inner-dashboard-card {
+  border: 1px solid #e0e0e0;
+  border-radius: $radius-md;
+  box-shadow: $shadow-md;
+  background-color: $background-color;
+  min-height: 200px;
   height: 100%;
+  padding: 1rem;
+  }
+
+  .avatar-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .avatar {
+    width: 130px;
+    height: 130px;
+    border: 2px solid #f8f9fa;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: $shadow-md;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .user-name {
+    font-weight: 600;
+    color: $text-color;
+    font-size: 1.25rem;
+  }
+
+  .stat-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: $accent-color;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: $text-color;
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: $text-color;
+  }
+
+  .form-wrapper {
+    max-width: 600px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .custom-flat-button {
+    background-color: $primary-color;
+    color: white;
+    border: none;
+    padding: 1em 2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: 0.2s;
+    border-radius: $radius-md;
+    box-shadow: $shadow-md;
+    letter-spacing: 1px;
+    opacity: 0.85;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      position: relative;
+      top: 4px;
+      box-shadow: $shadow-md;
+    }
+  }
+
+  .card-title-centered {
+  text-align: center;
+  margin-bottom: 1.5rem; // espace sous le titre, ajustable
+  }
 }
