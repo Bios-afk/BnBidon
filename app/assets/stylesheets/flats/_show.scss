@@ -1,3 +1,5 @@
+@import "../template.scss";
+
 .container-show {
   max-width: 900px;
   margin: 0 auto;
@@ -6,21 +8,22 @@
 
 /* Cartes d’information */
 .card {
-  background-color: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  background-color: #8b0303;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-lg;
 }
 
 /* Titres */
-h1, h4 {
-  font-family: 'Georgia', serif;
+h1,
+h4 {
+  font-family: "Georgia", serif;
   color: #222;
   margin-bottom: 1rem;
 }
 
 /* Paragraphes */
 p {
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   color: #555;
   line-height: 1.4;
   margin-bottom: 0.75rem;
@@ -30,7 +33,7 @@ p {
 .form-label {
   font-weight: 600;
   color: #444;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 /* Inputs date */
@@ -39,7 +42,7 @@ input[type="date"] {
   border: 1px solid #ddd;
   padding: 0.4rem 0.6rem;
   font-size: 1rem;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   transition: border-color 0.3s ease;
 }
 
@@ -53,7 +56,7 @@ input[type="date"]:focus {
   border-radius: 10px;
   font-weight: 600;
   padding: 0.5rem 0;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
   transition: background-color 0.3s ease;
 }
 
