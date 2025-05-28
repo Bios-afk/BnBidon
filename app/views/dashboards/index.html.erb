@@ -64,13 +64,12 @@
                                 </div>
 
                                 <div class="btn-group" role="group">
-                                  <%= link_to 'Modifier', edit_flat_path(flat),
+                                  <%# <%= link_to 'Modifier', edit_flat_path(flat),
                                               class: 'btn btn-sm btn-outline-primary',
                                               data: { turbo_frame: "flat_#{flat.id}" } %>
 
-                                  <%= link_to 'Supprimer', flat_path(flat),
-                                              method: :delete,
-                                              data: { turbo_confirm: "Supprimer ce logement ?", turbo_frame: "_top" },
+                                  <%= link_to 'Supprimer', flat,
+                                              data: { turbo_methode: :delete, turbo_confirm: "Supprimer ce logement ?"},
                                               class: 'btn btn-sm btn-outline-danger' %>
                                 </div>
                               </div>
