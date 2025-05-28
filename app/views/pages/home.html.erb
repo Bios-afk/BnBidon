@@ -1,15 +1,18 @@
 <div class="container">
-  <h1 class="page-title">Logements populaires</h1>
-
-  <div class="cards">
-    <% @flats.each do |flat| %>
-      <%= link_to flat_path(flat), class: "card-category no-image" do %>
-        <div class="card-category-content">
-          <h2><%= flat.name %></h2>
-          <p><%= flat.address %></p>
-          <p><strong><%= flat.price %> €</strong> / nuit</p>
-        </div>
+  <div class="container-home">
+    <h1 class="page-title">Logements populaires</h1>
+    <div class="row gap-4 justify-content-center">
+      <% @flats.each do |flat| %>
+        <%= link_to flat_path(flat), class: "card-home col-2 p-0" do %>
+          <div class="card-category col-2", style="background-image: url('<%= cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) if flat.photos.attached?%>');">
+            <div class="card-content">
+              <h2><%= flat.name %></h2>
+              <p><%= truncate(flat.address, length: 15) %></p>
+              <p><strong><%= flat.price %> €</strong> / nuit</p>
+            </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
