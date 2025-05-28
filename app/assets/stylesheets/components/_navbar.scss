@@ -1,13 +1,8 @@
-
-.body {
-  padding-top: 70px; // Ajuste selon la hauteur réelle de ta navbar
-}
-
 .navbar-lewagon {
   justify-content: space-between;
   background-color: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1030;
+  margin-bottom: 20px;
 }
 
 .avatar {
@@ -19,18 +14,4 @@
 
 .logo {
   height: 40px;
-}
-
-.custom-navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1030; // au-dessus du contenu
-  background-color: white; // ou transparent avec un fond blur si besoin
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-body {
-  padding-top: 70px; // ajuste selon la hauteur de ta navbar
 }
