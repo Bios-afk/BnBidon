@@ -8,13 +8,13 @@ export default class extends Controller {
   }
 
   toggle() {
-    // On log pour vérifier si toggle est appelé et si formTarget est trouvé
-    console.log("Toggle called");
-    console.log(this.hasFormTarget);  // boolean true/false
-    if (this.hasFormTarget) {
-      this.formTarget.classList.toggle("d-none");
-    } else {
-      console.warn("formTarget not found!");
+    this.formTarget.classList.toggle("d-none")
+
+    // Si le formulaire est maintenant visible, scroller dessus
+    if (!this.formTarget.classList.contains("d-none")) {
+      setTimeout(() => {
+        this.formTarget.scrollIntoView({ behavior: "smooth", block: "start" })
+      }, 100) // délai court pour garantir que le DOM est bien à jour
     }
   }
 }
