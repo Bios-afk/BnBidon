@@ -51,9 +51,37 @@
           <div class="col-md-6">
             <div class="card inner-dashboard-card h-100">
               <div class="card-body">
-                <h3 class="card-title">Manage my flats</h3>
-                <!-- Contenu à venir -->
-              </div>
+                  <h3 class="card-title">Manage my flats</h3>
+                    <% if @flats.any? %>
+                      <ul class="list-unstyled">
+                        <% @flats.each do |flat| %>
+                          <turbo-frame id="flat_<%= flat.id %>">
+                            <li class="mb-3">
+                              <div class="flat-item d-flex justify-content-between align-items-start">
+                                <div>
+                                  <h5 class="mb-1"><%= flat.name %></h5>
+                                  <p class="mb-0 text-muted"><%= flat.address %></p>
+                                </div>
+
+                                <div class="btn-group" role="group">
+                                  <%= link_to 'Modifier', edit_flat_path(flat),
+                                              class: 'btn btn-sm btn-outline-primary',
+                                              data: { turbo_frame: "flat_#{flat.id}" } %>
+
+                                  <%= link_to 'Supprimer', flat_path(flat),
+                                              method: :delete,
+                                              data: { turbo_confirm: "Supprimer ce logement ?", turbo_frame: "_top" },
+                                              class: 'btn btn-sm btn-outline-danger' %>
+                                </div>
+                              </div>
+                            </li>
+                          </turbo-frame>
+                        <% end %>
+                      </ul>
+                    <% else %>
+                      <p class="text-muted">Vous n'avez pas encore de logement.</p>
+                    <% end %>
+                </div>
             </div>
           </div>
 

@@ -102,4 +102,20 @@
   text-align: center;
   margin-bottom: 1.5rem; // espace sous le titre, ajustable
   }
+
+  .flat-item {
+  border: 1px solid #e0e0e0;
+  padding: 12px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+
+  h5 {
+    font-weight: 600;
+    color: #333;
+  }
+
+  p {
+    font-size: 0.9rem;
+  }
+  }
 }

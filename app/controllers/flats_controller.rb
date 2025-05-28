@@ -19,6 +19,16 @@ class FlatsController < ApplicationController
     end
   end
 
+  def destroy
+    @flat = Flat.find(params[:id])
+    @flat.destroy
+
+    respond_to do |format|
+      format.turbo_stream
+      format.html { redirect_to dashboard_path, notice: "Logement supprimé." }
+    end
+  end
+
   private
 
   def flat_params
