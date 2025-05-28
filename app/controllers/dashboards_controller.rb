@@ -6,5 +6,6 @@ class DashboardsController < ApplicationController
 
     @bookings_count = @user.bookings.count
     @reviews_count = @user.flat_reviews.count
+    @flats = @user.flats
   end
 end
