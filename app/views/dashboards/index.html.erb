@@ -55,7 +55,7 @@
                     <% if @flats.any? %>
                       <ul class="list-unstyled">
                         <% @flats.each do |flat| %>
-                          <turbo-frame id="flat_<%= flat.id %>">
+                          <%# <turbo-frame id="flat_<%= flat.id %>
                             <li class="mb-3">
                               <div class="flat-item d-flex justify-content-between align-items-start">
                                 <div>
@@ -68,13 +68,11 @@
                                               class: 'btn btn-sm btn-outline-primary',
                                               data: { turbo_frame: "flat_#{flat.id}" } %>
 
-                                  <%= link_to 'Supprimer', flat,
-                                              data: { turbo_methode: :delete, turbo_confirm: "Supprimer ce logement ?"},
-                                              class: 'btn btn-sm btn-outline-danger' %>
+                                  <%= link_to "Supprimer", flat, data: { turbo_method: :delete, confirm: "Es-tu sûr ?" } %>
                                 </div>
                               </div>
                             </li>
-                          </turbo-frame>
+                          <%# </turbo-frame> %>
                         <% end %>
                       </ul>
                     <% else %>

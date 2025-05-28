@@ -21,8 +21,12 @@ class FlatsController < ApplicationController
 
   def destroy
     @flat = Flat.find(params[:id])
-    @flat.destroy
-    redirect_to dashboard_path, notice: "Logement supprimé."
+    
+    if @flat.destroy
+      redirect_to dashboard_path, notice: "Logement supprimé."
+    else
+      redirect_to dashboard_path, alert: "Erreur : #{@flat.errors.full_messages.join(", ")}"
+    end
     # respond_to do |format|
     #   format.turbo_stream
     #   format.html { redirect_to dashboard_path, notice: "Logement supprimé." }
