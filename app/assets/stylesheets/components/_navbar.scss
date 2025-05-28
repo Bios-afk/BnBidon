@@ -1,7 +1,9 @@
+@import "../template.scss";
+
 .navbar-lewagon {
   width: 100%;
   justify-content: space-between;
-  background-color: white;
+  background-color: $secondary-color;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -14,4 +16,9 @@
 
 .logo {
   width: auto;
+}
+
+.dropdown-item:hover {
+  justify-content: space-between;
+  background-color: $secondary-color;
 }
