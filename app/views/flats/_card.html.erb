@@ -7,8 +7,8 @@
         <p class="mb-0 text-muted"><%= flat.address %></p>
       </div>
       <div class="btn-group">
-        <%= link_to 'Modifier', edit_flat_path(flat), class: 'btn btn-outline-primary', data: { turbo_frame: "flat_#{flat.id}" } %>
-        <%= link_to "Supprimer", flat, data: { turbo_method: :delete, turbo_confirm: "Supprimer ?" }, class: "btn btn-outline-danger" %>
+        <%= link_to 'Update', edit_flat_path(flat), class: 'btn btn-outline-primary', data: { turbo_frame: "flat_#{flat.id}" } %>
+        <%= link_to "Delete", flat, data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to remove this flat?" }, class: "btn btn-outline-danger" %>
       </div>
     </div>
   </li>

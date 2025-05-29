@@ -3,8 +3,8 @@
     <div class="container-search">
   <%= form_with url: root_path, method: :get, local: true, class: "d-flex w-100 justify-content-center mb-4" do %>
     <div class="input-group" style="max-width: 600px;">
-      <%= text_field_tag :query, params[:query], placeholder: "Rechercher par adresse...", class: "form-control" %>
-      <%= submit_tag "Rechercher", class: "btn btn-primary" %>
+      <%= text_field_tag :query, params[:query], placeholder: "Search by address...", class: "form-control" %>
+      <%= submit_tag "Search", class: "btn btn-primary" %>
     </div>
   <% end %>
   <h1>B&Bidon - Strass & Favelas - Low-cost lifestyle</h1>
@@ -17,7 +17,7 @@
             <div class="card-content">
               <h2><%= flat.name %></h2>
               <p><%= truncate(flat.address, length: 15) %></p>
-              <p><strong><%= flat.price %> €</strong> / nuit</p>
+              <p><strong><%= flat.price %> €</strong> / night</p>
             </div>
           </div>
         <% end %>
