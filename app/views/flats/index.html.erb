@@ -30,7 +30,7 @@
               <% image_url = flat.photos.attached? ? cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) : "https://img.freepik.com/photos-premium/touristes-campent-tente-pres-feu-dans-foret-pres-du-lac_327483-6608.jpg?semt=ais_items_boosted&w=740" %>
 
               <div class="card-category"
-                   style="background-image: url('<%= image_url %>'); height: 200px; width: 100%; border-radius: 12px; background-size: cover; background-position: center;"></div>
+                   style="background-image: url('<%= image_url %>'); height: 200px; width: 100%; background-size: cover; background-position: center;"></div>
 
               <div class="card-content text-light bg-overlay px-3 py-2 small-text w-100">
                 <h2><%= flat.name %></h2>

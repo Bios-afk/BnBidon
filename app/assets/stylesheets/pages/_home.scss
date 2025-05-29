@@ -56,8 +56,8 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  border-top-left-radius: $radius-md $radius-md 0 0;
-  border-top-right-radius: $radius-md $radius-md 0 0;
+  border-top-left-radius: $radius-md;
+  border-top-right-radius: $radius-md;
 }
 
 .card-home:hover {
