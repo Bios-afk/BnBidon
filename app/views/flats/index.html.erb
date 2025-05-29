@@ -1,26 +1,58 @@
-<div class="container-home">
-  <div class="banner mb-4" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.prismic.io/jr-website%2Fe9e1c15b-5c8d-4efd-8f28-65bf368698c0_header_fiche_project_imgs_2560x720.jpg?auto=compress,format);">
-    <div class="container-search">
-  <%= form_with url: root_path, method: :get, local: true, class: "d-flex w-100 justify-content-center mb-4" do %>
-    <div class="input-group" style="max-width: 600px;">
-      <%= text_field_tag :query, params[:query], placeholder: "Rechercher par adresse...", class: "form-control" %>
-      <%= submit_tag "Rechercher", class: "btn btn-primary" %>
-    </div>
-  <% end %>
-  <h1>B&Bidon - Strass & Favelas - Low-cost lifestyle</h1>
+<div class="banner text-white d-flex flex-column align-items-center justify-content-center mb-4"
+     style="width: 100%; height: 400px;
+            background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+            url(https://images.prismic.io/jr-website%2Fe9e1c15b-5c8d-4efd-8f28-65bf368698c0_header_fiche_project_imgs_2560x720.jpg?auto=compress,format);
+            background-size: cover;
+            background-position: center;
+            padding: 3rem 1rem;">
+
+  <div class="container text-center">
+    <%= form_with url: root_path, method: :get, local: true, class: "d-flex justify-content-center mb-3" do %>
+      <div class="input-group" style="max-width: 600px;">
+        <%= text_field_tag :query, params[:query], placeholder: "Rechercher par adresse...", class: "form-control" %>
+        <%= submit_tag "Rechercher", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    <h1 class="mt-3">B&Bidon - Strass & Favelas - Low-cost lifestyle</h1>
+  </div>
 </div>
-     </div>
-    <div class="row gap-4 justify-content-center pb-4 w-100">
-      <% @flats.each do |flat| %>
-        <%= link_to flat_path(flat), class: "card-home col-2 p-0" do %>
-          <div class="card-category col-2", style="background-image: url('<%= cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) if flat.photos.attached?%>');">
-            <div class="card-content">
-              <h2><%= flat.name %></h2>
-              <p><%= truncate(flat.address, length: 15) %></p>
-              <p><strong><%= flat.price %> €</strong> / nuit</p>
-            </div>
+
+<!-- CONTENU -->
+<div class="container px-4">
+  <div class="row">
+
+    <!-- FLATS -->
+    <div class="col-lg-8">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        <% @flats.each do |flat| %>
+          <div class="col">
+            <%= link_to flat_path(flat), class: "card-home text-decoration-none d-flex flex-column align-items-center" do %>
+              <% image_url = flat.photos.attached? ? cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) : "https://img.freepik.com/photos-premium/touristes-campent-tente-pres-feu-dans-foret-pres-du-lac_327483-6608.jpg?semt=ais_items_boosted&w=740" %>
+
+              <div class="card-category"
+                   style="background-image: url('<%= image_url %>'); height: 200px; width: 100%; border-radius: 12px; background-size: cover; background-position: center;"></div>
+
+              <div class="card-content text-light bg-overlay px-3 py-2 small-text w-100">
+                <h2><%= flat.name %></h2>
+                <p><%= truncate(flat.address, length: 30) %></p>
+                <p><strong><%= flat.price %> €</strong> / nuit</p>
+              </div>
+            <% end %>
           </div>
         <% end %>
-      <% end %>
+      </div>
     </div>
+
+    <!-- MAP STICKY -->
+    <div class="col-lg-4">
+      <div class="position-sticky" style="top: 100px;">
+        <div id="map" style="width: 100%; height: calc(100vh - 120px); border-radius: 12px; overflow: hidden;"
+          data-controller="map"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+          data-map-markers-value="<%= raw @markers.to_json %>">
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
