@@ -10,17 +10,19 @@
   <h1>B&Bidon - Strass & Favelas - Low-cost lifestyle</h1>
 </div>
      </div>
-    <div class="row gap-4 justify-content-center pb-4 w-100">
-      <% @flats.each do |flat| %>
-        <%= link_to flat_path(flat), class: "card-home col-2 p-0" do %>
-          <div class="card-category col-2", style="background-image: url('<%= cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) if flat.photos.attached?%>');">
-            <div class="card-content">
-              <h2><%= flat.name %></h2>
-              <p><%= truncate(flat.address, length: 15) %></p>
-              <p><strong><%= flat.price %> €</strong> / nuit</p>
-            </div>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+     <div class="row gap-4 justify-content-center pb-4 w-100 container-home">
+  <% @flats.each do |flat| %>
+    <%= link_to flat_path(flat), class: "card-home col-2 p-0 text-decoration-none d-flex flex-column align-items-center" do %>
+      <% image_url = flat.photos.attached? ? cl_image_path(flat.photos[0].key, width: 600, height: 400, crop: :fill) : "https://img.freepik.com/photos-premium/touristes-campent-tente-pres-feu-dans-foret-pres-du-lac_327483-6608.jpg?semt=ais_items_boosted&w=740" %>
+
+      <div class="card-category <%= 'no-image' unless flat.photos.attached? %>" style="background-image: url('<%= image_url %>'); height: 240px; width: 100%; border-radius: $radius-md;"></div>
+
+      <div class="card-content text-light bg-overlay px-3 py-2 small-text">
+        <h2><%= flat.name %></h2>
+        <p><%= truncate(flat.address, length: 30) %></p>
+        <p><strong><%= flat.price %> €</strong> / nuit</p>
+      </div>
+    <% end %>
+  <% end %>
+</div>
   </div>
