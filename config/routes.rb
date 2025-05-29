@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  root to: "flats#index"
 
-  resources :flats, expect: [:index], only: [:new, :create, :show, :edit, :update, :destroy] do
+  resources :flats, expect: [:index], only: [:create, :show, :edit, :update, :destroy] do
     resources :bookings, only: [:create]
     resources :flat_reviews, only: [:create]
   end

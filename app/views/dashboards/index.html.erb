@@ -6,12 +6,13 @@
     <!-- 🧍‍♂️ Carte infos utilisateur -->
     <div class="col-lg-6">
       <div class="card dashboard-card">
-        <div class="avatar-wrapper">
-          <div class="avatar">
-            <img src="https://via.placeholder.com/150" alt="Avatar de l'utilisateur" />
+        <div class='inner-dashboard-card'>
+          <div class="avatar-wrapper">
+            <div class="avatar">
+              <img src="https://via.placeholder.com/150" alt="Avatar de l'utilisateur" />
+            </div>
           </div>
         </div>
-      </div>
 
         <!-- Nom et statistiques -->
         <div class="mt-4 row align-items-center">
@@ -52,17 +53,37 @@
           <div class="col-md-6">
             <div class="card inner-dashboard-card h-100">
               <div class="card-body">
-                  <h3 class="card-title">Manage my flats</h3>
-                    <% if @flats.any? %>
-                      <ul class="list-unstyled" id="flats-list">
-                        <%= turbo_stream_from "flats" %>
-                        <% @flats.each do |flat| %>
-                          <%= render partial: "flats/card", locals: { flat: flat } %>
-                        <% end %>
-                      </ul>
-                    <% else %>
-                      <p class="text-muted">Vous n'avez pas encore de logement.</p>
+                  <div class="d-flex align-items-center justify-content-between mb-3 px-3">
+                    <h3 class="card-title mb-0">Manage my flats</h3>
+                    <div class="text-center">
+                      <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#flatModal">
+                        + Add a new flat
+                      </button>
+                    </div>
+                    <div class="modal fade" id="flatModal" tabindex="-1" aria-labelledby="flatModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="flatModalLabel">Nouveau Logement</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                          </div>
+                          <div class="modal-body">
+                            <%= render partial: "flats/form", locals: { flat: Flat.new } %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <% if @flats.any? %>
+                  <ul class="list-unstyled" id="flats-list">
+                    <%= turbo_stream_from "flats" %>
+                    <% @flats.each do |flat| %>
+                      <%= render partial: "flats/card", locals: { flat: flat } %>
                     <% end %>
+                  </ul>
+                <% else %>
+                  <p class="text-muted">Vous n'avez pas encore de logement.</p>
+                <% end %>
                 </div>
             </div>
           </div>
@@ -80,23 +101,5 @@
         </div>
       </div>
     </div>
-
-
-    <!-- ➕ Ajouter un logement : bouton et formulaire centrés -->
-    <div class="col-lg-12 d-flex flex-column align-items-center">
-      <div data-controller="toggle">
-        <div class="text-center">
-          <button class="custom-flat-button" data-action="click->toggle#toggle">
-            + Add a new flat
-          </button>
-        </div>
-
-        <div data-toggle-target="form" class="d-none mt-3" id="flat-form">
-          <%= render partial: "flats/form", locals: {flat: Flat.new} %>
-        </div>
-
-      </div>
-    </div>
-
   </div>
 </div>

@@ -1,6 +1,14 @@
 class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
+  def index
+    if params[:query].present?
+      @flats = Flat.where("address ILIKE ?", "%#{params[:query]}%")
+    else
+      @flats = Flat.all
+    end
+  end
+  
   def show
     @flat = Flat.find(params[:id])
     @photos = @flat.photos
