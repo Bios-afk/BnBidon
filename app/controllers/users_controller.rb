@@ -7,11 +7,12 @@ class UsersController < ApplicationController
 
   def update_avatar
     @user = current_user
-    
+
     if params[:user][:avatar].present?
       @user.avatar.attach(params[:user][:avatar])
+      redirect_to dashboard_path, notice: 'Picture updated successfully.'
     else
-      redirect_to dashboard_path, alert: "Veuillez sélectionner une image."
+      redirect_to dashboard_path, alert: "Please select an image to upload."
     end
   end
 
