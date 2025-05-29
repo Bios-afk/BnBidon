@@ -1,6 +1,18 @@
 class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
+  def index
+    @flats = Flat.geocoded
+    @markers = @flats.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {flat: flat}),
+        marker_html: render_to_string(partial: "marker")
+      }
+    end
+  end
+
   def show
     @flat = Flat.find(params[:id])
     @photos = @flat.photos
