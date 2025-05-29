@@ -2,14 +2,10 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:show]
 
   def index
-    @flats = Flat.geocoded
-    @markers = @flats.map do |flat|
-      {
-        lat: flat.latitude,
-        lng: flat.longitude,
-        info_window_html: render_to_string(partial: "info_window", locals: {flat: flat}),
-        marker_html: render_to_string(partial: "marker")
-      }
+    if params[:query].present?
+      @flats = Flat.where("address ILIKE ?", "%#{params[:query]}%")
+    else
+      @flats = Flat.all
     end
   end
 
@@ -23,14 +19,19 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     @flat.photos.attach(params[:flat][:photos]) if params[:flat][:photos].present?
-
     if @flat.save
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to dashboard_path, notice: "Logement créé avec succès." }
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("flat_form_modal", partial: "flats/form", locals: { flat: @flat }), status: :unprocessable_entity }
+        format.html do
+          flash.now[:alert] = "Merci de corriger les erreurs."
+          render partial: 'flats/form', locals: {flat: @flat}, status: :unprocessable_entity
+        end
+      end
     end
   end
 

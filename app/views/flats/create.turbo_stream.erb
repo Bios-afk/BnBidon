@@ -2,6 +2,6 @@
   <%= render partial: "flats/card", locals: { flat: @flat } %>
 <% end %>
 
-<%= turbo_stream.replace "new_flat" do %>
+<%= turbo_stream.replace "flat_form_modal" do %>
   <%= render partial: "flats/form", locals: { flat: Flat.new } %>
 <% end %>
