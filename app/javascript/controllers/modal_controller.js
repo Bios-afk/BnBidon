@@ -14,10 +14,12 @@ export default class extends Controller {
     });
 
     addEventListener("hide.bs.modal", (event) => {
-      this.element.querySelectorAll(".is-invalid").forEach((el) => {
+      this.element.querySelectorAll(".form-control").forEach((el) => {
         el.classList.remove("is-invalid");
+        el.classList.remove("is-valid");
+        el.value = "";
       });
-      this.element.querySelector('.alert')?.remove();
+      this.element.querySelector(".alert")?.remove();
     });
   }
 }

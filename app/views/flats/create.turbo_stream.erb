@@ -1,4 +1,4 @@
-<%= turbo_stream.append "flats-list" do %>
+<%= turbo_stream.prepend "flats-list" do %>
   <%= render partial: "flats/card", locals: { flat: @flat } %>
 <% end %>
 
