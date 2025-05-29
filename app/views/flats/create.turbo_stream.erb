@@ -1,0 +1,7 @@
+<%= turbo_stream.append "flats-list" do %>
+  <%= render partial: "flats/card", locals: { flat: @flat } %>
+<% end %>
+
+<%= turbo_stream.replace "new_flat" do %>
+  <%= render partial: "flats/form", locals: { flat: Flat.new } %>
+<% end %>
