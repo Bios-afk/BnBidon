@@ -13,8 +13,8 @@
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-              <%= image_tag("https://kitt.lewagon.com/placeholder/users/default", class: "rounded-circle", width: "30") %>
+            <a class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
+              <%= image_tag current_user.avatar.attached? ? current_user.avatar : "default-avatar.png", class: "rounded-circle", style: "object-fit: cover;", width: "30", height: "30" %>
               <%= current_user.name || current_user.email %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
