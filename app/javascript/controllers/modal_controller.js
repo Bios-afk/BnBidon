@@ -1,12 +1,13 @@
-import { Controller } from "@hotwired/stimulus"
-import {Modal} from "bootstrap"
+import { Controller } from "@hotwired/stimulus";
+// import { Modal } from "bootstrap"
 
 export default class extends Controller {
   connect() {
-    window.addEventListener("modal:close", () => {
-      const modalElement = document.getElementById("flatModal")
-      const modal = bootstrap.Modal.getInstance(modalElement)
-      if (modal) modal.hide()
-    })
+    console.log("connecté au modal controller");
+    this.modal = new bootstrap.Modal(this.element);
+    console.log(this.modal);
+    addEventListener("turbo:before-stream-render", (event) => {
+      this.modal.hide();
+    });
   }
 }

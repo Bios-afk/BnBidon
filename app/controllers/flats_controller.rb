@@ -8,7 +8,7 @@ class FlatsController < ApplicationController
       @flats = Flat.all
     end
   end
-  
+
   def show
     @flat = Flat.find(params[:id])
     @photos = @flat.photos
@@ -19,14 +19,19 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     @flat.photos.attach(params[:flat][:photos]) if params[:flat][:photos].present?
-
     if @flat.save
       respond_to do |format|
         format.turbo_stream
         format.html { redirect_to dashboard_path, notice: "Logement créé avec succès." }
       end
     else
-      render :new, status: :unprocessable_entity
+      respond_to do |format|
+        format.turbo_stream { render turbo_stream: turbo_stream.replace("flat_form_modal", partial: "flats/form", locals: { flat: @flat }), status: :unprocessable_entity }
+        format.html do
+          flash.now[:alert] = "Merci de corriger les erreurs."
+          render partial: 'flats/form', locals: {flat: @flat}, status: :unprocessable_entity
+        end
+      end
     end
   end
 

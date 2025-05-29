@@ -60,19 +60,7 @@
                         + Add a new flat
                       </button>
                     </div>
-                    <div class="modal fade" id="flatModal" tabindex="-1" aria-labelledby="flatModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="flatModalLabel">Nouveau Logement</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
-                          </div>
-                          <div class="modal-body">
-                            <%= render partial: "flats/form", locals: { flat: Flat.new } %>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <%= render partial: 'flats/modal'%>
                   </div>
                 <% if @flats.any? %>
                   <ul class="list-unstyled" id="flats-list">

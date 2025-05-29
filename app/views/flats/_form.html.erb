@@ -1,5 +1,6 @@
 <%= turbo_frame_tag "flat_form_modal" do %>
   <%= simple_form_for flat, html: { multipart: true }, data: { turbo_frame: "flat_form_modal" } do |f| %>
+  <%= f.error_notification %>
     <div class="row">
       <div class="col-md-6">
         <%= f.input :name %>

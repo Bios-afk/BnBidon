@@ -5,5 +5,3 @@
 <%= turbo_stream.replace "flat_form_modal" do %>
   <%= render partial: "flats/form", locals: { flat: Flat.new } %>
 <% end %>
-
-<%# <%= turbo_stream.invoke :dispatchEvent, "modal:close", target: "body" %>
