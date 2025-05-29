@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resources :flat_reviews, only: [:create]
   end
 
+  patch 'avatar', to: 'users#update_avatar', as: :avatar_users
+
   get 'dashboard', to: 'dashboards#index', as: 'dashboard'
 end
