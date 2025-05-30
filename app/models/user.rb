@@ -9,6 +9,10 @@ class User < ApplicationRecord
   has_many :flat_reviews, dependent: :destroy
   has_one_attached :avatar
 
+  #ajout thibault
+  has_many :received_bookings, through: :flats, source: :bookings
+  #
+
   # validates :name, presence: true
   validates :email, presence: true, uniqueness: true
 
