@@ -1,12 +1,7 @@
-<div class="flat-booking-container mb-3">
+<%= link_to flat_path(booking.flat), class: "flat-booking-container mb-3 text-decoration-none text-reset" do %>
   <div class="flat-card d-flex">
-    <div class="flat-preview me-3">
-      <% if booking.flat.photos.attached? %>
-        <%= image_tag booking.flat.photos.first, class: "rounded", size: "60x60" %>
-      <% else %>
-        <%= image_tag "https://e7.pngegg.com/pngimages/2/738/png-clipart-two-question-marks-illustration-double-question-mark-icons-logos-emojis-question-marks.png", class: "rounded", size: "60x60" %>
-      <% end %>
-    </div>
+    <% image_url = booking.flat.photos.attached? ? cl_image_path(booking.flat.photos[0].key, crop: :fill) : "https://img.freepik.com/photos-premium/touristes-campent-tente-pres-feu-dans-foret-pres-du-lac_327483-6608.jpg?semt=ais_items_boosted&w=740" %>
+    <div class="flat-preview me-3" style="background-image: url('<%= image_url %>');"></div>
     <div class="flat-booking-info">
       <h6 class="mb-1"><%= booking.flat.name %></h6>
       <small>
@@ -15,4 +10,4 @@
       </small>
     </div>
   </div>
-</div>
+<% end %>
