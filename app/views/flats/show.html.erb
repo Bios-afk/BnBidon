@@ -104,6 +104,7 @@
           <div class="card p-4 position-sticky d-none d-md-block"
           data-controller="price"
           style="border-radius: 12px; top: 80px; z-index: 0;">
+          <h4 class="card-show mb-3">Price per night: <%= @flat.price %> €</h4>
           <h4 class="card-show mb-3">Choose your period of stay</h4>
           <!-- Messages d'erreur -->
           <% if @booking.errors.any? %>
