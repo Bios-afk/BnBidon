@@ -27,18 +27,21 @@
   }
 
   .avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 100%; // 🧠 garantit que l’image ne flotte pas sur la droite
+  }
+
+  .avatar-img {
     width: 130px;
     height: 130px;
     border: 2px solid #f8f9fa;
     border-radius: 50%;
     overflow: hidden;
     box-shadow: $shadow-md;
-
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+    object-fit: cover;
   }
 
   .user-name {
