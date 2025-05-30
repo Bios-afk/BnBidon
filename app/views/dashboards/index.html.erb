@@ -45,7 +45,7 @@
       <div class="card dashboard-card">
         <h2 class="card-title">My bookings</h2>
         <% if @my_bookings.any? %>
-          <div class="scrollable-list">
+          <div class="scrollable-booking-list">
             <% @my_bookings.each do |booking| %>
               <%= render partial: "flats/dashboard_booking_card", locals: { booking: booking } %>
             <% end %>
