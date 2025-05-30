@@ -8,6 +8,13 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show]
   end
 
+  resources :bookings do
+    member do
+      patch :validate
+      patch :refuse
+    end
+  end
+
   patch 'avatar', to: 'users#update_avatar', as: :avatar_users
   get 'dashboard', to: 'dashboards#index', as: 'dashboard'
 end

@@ -96,23 +96,12 @@
                 <h3 class="card-title">Bookings for my flats</h3>
                 <% if @received_bookings.any? %>
                   <div class="scrollable-booking-list">
-                    <% @received_bookings.each do |booking| %>
-                      <%= link_to flat_path(booking.flat), class: "flat-booking-container mb-3 text-decoration-none text-reset" do %>
-                        <div class="flat-card d-flex">
-                          <% image_url = booking.flat.photos.attached? ? cl_image_path(booking.flat.photos[0].key, crop: :fill) : "https://img.freepik.com/photos-premium/touristes-campent-tente-pres-feu-dans-foret-pres-du-lac_327483-6608.jpg?semt=ais_items_boosted&w=740" %>
-                          <div class="flat-preview me-3" style="background-image: url('<%= image_url %>');"></div>
-                          <div class="flat-booking-info">
-                            <h6 class="mb-1"><%= booking.flat.name %></h6>
-                            <small>
-                              <%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %><br>
-                              Price: <%= formatted_booking_price(booking) %>
-                            </small>
-                          </div>
-                        </div>
+                    <ul class="list-unstyled mb-0">
+                      <% @received_bookings.each do |booking| %>
+                        <%= render partial: 'flats/booking', locals: { booking: booking } %>
                       <% end %>
-                    <% end %>
+                    </ul>
                   </div>
-
                 <% else %>
                   <p class="text-muted">No one has booked your flats yet.</p>
                 <% end %>
