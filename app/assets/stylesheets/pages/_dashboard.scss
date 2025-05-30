@@ -121,4 +121,10 @@
     font-size: 0.9rem;
   }
   }
+
+  .scrollable-booking-list {
+  max-height: 250px; // ou la hauteur souhaitée
+  overflow-y: auto;
+  padding-right: 8px; // pour laisser la place au scrollbar
+  }
 }
