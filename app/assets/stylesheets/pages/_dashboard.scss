@@ -121,4 +121,53 @@
     font-size: 0.9rem;
   }
   }
+
+  .scrollable-booking-list {
+  max-height: 250px;
+  min-height: 250px;
+  overflow-y: scroll; // force le scroll même sans besoin
+  padding-right: 8px;
+
+  // ✅ Toujours afficher la scrollbar
+  scrollbar-width: auto;         // Firefox
+  scrollbar-color: #ccc transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ccc;
+    border-radius: 4px;
+  }
+  }
+
+  .flat-booking-container {
+    width: 100%;
+  }
+
+  .flat-card {
+    display: flex;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .flat-preview img {
+    border-radius: 0.5rem;
+    object-fit: cover;
+    width: 60px;
+    height: 60px;
+    }
+
+  .flat-booking-info {
+    flex: 1;
+    }
+
 }
