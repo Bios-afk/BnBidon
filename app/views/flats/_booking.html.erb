@@ -1,25 +1,34 @@
-<%= turbo_frame_tag "booking_#{booking.id}" do %>
-  <%= link_to flat_path(booking.flat), class: "flat-booking-container mb-3 text-decoration-none text-reset" do %>
-    <div class="flat-card d-flex">
-      <% image_url = booking.flat.photos.attached? ? cl_image_path(booking.flat.photos[0].key, crop: :fill) : "https://img.freepik.com/photos-premium/touristes-campent-tente-pres-feu-dans-foret-pres-du-lac_327483-6608.jpg?semt=ais_items_boosted&w=740" %>
-      <div class="flat-preview me-3" style="background-image: url('<%= image_url %>');"></div>
+<div class="flat-booking-container mb-3">
+  <div class="flat-card d-flex">
+
+    <%= link_to flat_path(booking.flat), class: "text-decoration-none text-reset d-flex align-items-center flex-grow-1" do %>
+      <% image_url = booking.flat.photos.attached? ? cl_image_path(booking.flat.photos[0].key, crop: :fill) : "https://img.freepik.com/photos-premium/touristes-campent-tente-pres-feu-dans-foret-pres-du-lac_327483-6608.jpg?semt=ais_items_boosted&w=740"%>
+      <div class="flat-preview me-3" style="background-image: url('<%= image_url %>'); height: 100%;"></div>
       <div class="flat-booking-info">
         <h6 class="mb-1"><%= booking.flat.name %></h6>
         <small>
           <%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %><br>
           Price: <%= formatted_booking_price(booking) %>
         </small>
-        <div class="d-flex align-items-center justify-content-center">
-          <% if booking.en_attente_status? %>
-            <%= button_to "Validate", validate_booking_path(booking), method: :patch, data: { turbo_stream: true }, class: "btn btn-sm btn-success" %>
-            <%= button_to "Refuse", refuse_booking_path(booking), method: :patch, data: { turbo_stream: true }, class: "btn btn-sm btn-danger" %>
-          <% elsif booking.validee_status? %>
-            <span class="badge bg-success">Validated</span>
-          <% elsif booking.refusee_status? %>
-            <span class="badge bg-danger">Refused</span>
-          <% end %>
-        </div>
       </div>
+    <% end %>
+
+    <div class="d-flex gap-2 ms-3 align-self-center">
+      <% if booking.en_attente_status? %>
+        <%= button_to validate_booking_path(booking), method: :patch, data: { turbo_stream: true }, class: "btn p-0 border-0 bg-transparent", title: "Valider" do %>
+          <span class="d-inline-block rounded-circle bg-success" style="width: 12px; height: 12px;"></span>
+        <% end %>
+
+        <%= button_to refuse_booking_path(booking), method: :patch, data: { turbo_stream: true }, class: "btn p-0 border-0 bg-transparent", title: "Refuser" do %>
+          <span class="d-inline-block rounded-circle bg-danger" style="width: 12px; height: 12px;"></span>
+        <% end %>
+
+      <% elsif booking.validee_status? %>
+        <span class="d-inline-block rounded-circle bg-success" style="width: 12px; height: 12px;" title="Validée"></span>
+
+      <% elsif booking.refusee_status? %>
+        <span class="d-inline-block rounded-circle bg-danger" style="width: 12px; height: 12px;" title="Refusée"></span>
+      <% end %>
     </div>
-  <% end %>
-<% end %>
+  </div>
+</div>

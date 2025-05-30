@@ -41,8 +41,8 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      redirect_to dashboard_path, notice: "Booking validated successfully!"
     end
+    redirect_to dashboard_path, notice: "Booking validated successfully!"
   end
 
   def refuse
@@ -51,8 +51,8 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      redirect_to dashboard_path, notice: "Booking validated successfully!"
     end
+    redirect_to dashboard_path, notice: "Booking validated successfully!"
   end
   def update
 
