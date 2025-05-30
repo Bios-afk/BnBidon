@@ -44,7 +44,15 @@
     <div class="col-lg-6">
       <div class="card dashboard-card">
         <h2 class="card-title">My bookings</h2>
-        <!-- Contenu à venir -->
+        <% if @my_bookings.any? %>
+          <div class="scrollable-list">
+            <% @my_bookings.each do |booking| %>
+              <%= render partial: "flats/dashboard_booking_card", locals: { booking: booking } %>
+            <% end %>
+          </div>
+        <% else %>
+          <p class="text-muted">No bookings yet.</p>
+        <% end %>
       </div>
     </div>
 
@@ -86,7 +94,30 @@
             <div class="card inner-dashboard-card h-100">
               <div class="card-body">
                 <h3 class="card-title">Bookings for my flats</h3>
-                <!-- Contenu à venir -->
+                <% if @received_bookings.any? %>
+                  <div class="scrollable-booking-list">
+                    <ul class="list-unstyled mb-0">
+                      <% @received_bookings.each do |booking| %>
+                        <li class="d-flex align-items-center mb-3">
+                          <% if booking.flat.photos.attached? %>
+                            <%= image_tag booking.flat.photos.first, class: "rounded me-3", size: "50x50" %>
+                          <% else %>
+                            <%= image_tag "https://e7.pngegg.com/pngimages/2/738/png-clipart-two-question-marks-illustration-double-question-mark-icons-logos-emojis-question-marks.png", class: "rounded me-3", size: "50x50" %>
+                          <% end %>
+                          <div>
+                            <strong><%= booking.flat.name %></strong><br>
+                            <small>
+                              <%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %><br>
+                              Price: <%= formatted_booking_price(booking) %>
+                            </small>
+                          </div>
+                        </li>
+                      <% end %>
+                    </ul>
+                  </div>
+                <% else %>
+                  <p class="text-muted">No one has booked your flats yet.</p>
+                <% end %>
               </div>
             </div>
           </div>
