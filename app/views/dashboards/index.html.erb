@@ -68,7 +68,7 @@
                     <%= render partial: 'flats/modal'%>
                   </div>
                 <% if @flats.any? %>
-                  <ul class="list-unstyled" id="flats-list">
+                  <ul class="list-unstyled" id="flats">
                     <%= turbo_stream_from "flats" %>
                     <% @flats.each do |flat| %>
                       <%= render partial: "flats/card", locals: { flat: flat } %>
