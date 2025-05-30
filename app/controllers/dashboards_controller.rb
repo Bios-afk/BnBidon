@@ -2,6 +2,8 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
   def index
+    @flat = Flat.new
+
     @flats = current_user.flats
     @user = current_user
 
