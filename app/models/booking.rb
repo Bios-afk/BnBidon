@@ -15,5 +15,5 @@ class Booking < ApplicationRecord
       errors.add(:end_date, "doit être après la date de début")
     end
   end
-  
+
 end

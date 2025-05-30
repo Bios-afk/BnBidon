@@ -1,23 +1,110 @@
 <div class="container p-4">
+<h1 class="mb-3"><%= @flat.name %></h1>
   <div class="container-show">
     <%= render 'carrousel' %>
     <div class="row mt-5">
       <!-- Colonne gauche : Infos du logement -->
       <div class="col-md-7">
-        <div class="card p-4 mb-4">
-          <h1 class="mb-3"><%= @flat.name %></h1>
+        <div class="card p-4 mb-4"style="border-radius: 8px">
+          <h2>Stay at <%= @flat.user.name %>'s place</h2>
+          <p class="text-muted">
+            Superhost — Hosting for <%= time_ago_in_words(@flat.user.created_at).gsub("about ", "") %>
+          </p>
+          <hr class="my-3">
           <p><strong>Address:</strong> <%= @flat.address %></p>
-          <p><strong>Price:</strong> <%= @flat.price %> € / nuit</p>
-          <p><strong>About this accommodation</strong> <%= @flat.description %></p>
+          <hr class="my-3">
+          <p><strong>About this accommodation:</strong> <%= @flat.description %></p>
+          <hr class="my-3">
+          <p><strong>What this place offers:</strong></p>
+        <ul class="list-unstyled">
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-bath fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Bathroom
+          </li>
+
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-bath fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Bathtub
+          </li>
+
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-wind fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Hair Dryer
+          </li>
+
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-broom fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Cleaning Supplies
+          </li>
+
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-capsules fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Shampoo
+          </li>
+
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-soap fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Body Soap
+          </li>
+
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-wifi fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Wifi
+          </li>
+
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-tv fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Television
+          </li>
+
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-fan fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Air Conditioning
+          </li>
+          <li>
+            <span class="fa-stack fa-fw" style="font-size: 1.2em;">
+              <i class="fa-solid fa-biohazard fa-stack-1x"></i>
+              <i class="fa-solid fa-ban fa-stack-2x text-dark opacity-75"></i>
+            </span>
+            Carbon Monoxide Detector
+          </li>
+        </ul>
         </div>
       </div>
 
       <!-- Colonne droite : Formulaire de réservation -->
-      <div class="col-md-5">
-        <div class="card p-4 position-sticky d-none d-md-block" data-controller="price">
-          <p><strong>Price:</strong> <%= @flat.price %> € / nuit</p>
+      <div class="col-md-5" style="border-radius: 8px">
+          <div class="card p-4 position-sticky d-none d-md-block"
+          data-controller="price"
+          style="border-radius: 12px; top: 80px; z-index: 10;">
           <h4 class="mb-3">Choose your period of stay</h4>
-
           <!-- Messages d'erreur -->
           <% if @booking.errors.any? %>
             <div class="alert alert-danger">
@@ -42,7 +129,7 @@
                   action: "change->price#update"
                 }
               } %>
-            <%= f.button :submit, value: 'Réserver', class: 'btn btn-primary w-100' %>
+            <%= f.button :submit, value: 'Book now', class: 'btn btn-primary w-100' %>
           <% end %>
 
           <h6 class="d-flex justify-content-center"><br>No amount will be debited at this time</h6>
