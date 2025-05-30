@@ -22,6 +22,11 @@ class FlatsController < ApplicationController
     @flat = Flat.find(params[:id])
     @photos = @flat.photos
     @booking = Booking.new
+    @markers = [{
+    lat: @flat.latitude,
+    lng: @flat.longitude,
+    info_window_html: render_to_string(partial: "flats/info_window", locals: { flat: @flat })
+  }]
   end
 
   def create

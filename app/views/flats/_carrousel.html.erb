@@ -7,7 +7,7 @@
   <div class="carousel-inner rounded-4">
     <% @photos.each do |photo| %>
       <div class="carousel-item <%= 'active' if photo == @photos.first %>">
-        <%= cl_image_tag(photo.key, height: 600, ar: '16:9', crop: :fill, class: "image-rounded w-100 object-fit-cover")%>
+        <%= cl_image_tag(photo.key, height: 450, ar: '16:9', crop: :fill, class: "image-rounded w-100 object-fit-cover")%>
       </div>
     <% end %>
   </div>
