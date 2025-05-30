@@ -2,6 +2,7 @@ class FlatsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
+
     if params[:query].present?
       @flats = Flat.where("address ILIKE ?", "%#{params[:query]}%")
     else
@@ -27,7 +28,7 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     @flat.photos.attach(params[:flat][:photos]) if params[:flat][:photos].present?
-    
+
     if @flat.save
       respond_to do |format|
         format.turbo_stream
@@ -41,6 +42,18 @@ class FlatsController < ApplicationController
           render partial: 'flats/form', locals: {flat: @flat}, status: :unprocessable_entity
         end
       end
+    end
+  end
+
+  def update
+    @flat = Flat.find(params[:id])
+    if @flat.update(flat_params)
+      respond_to do |format|
+        format.turbo_stream
+        format.html { redirect_to dashboard_path, notice: "Flat mis à jour" }
+      end
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
