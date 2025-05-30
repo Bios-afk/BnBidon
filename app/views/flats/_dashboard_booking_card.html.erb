@@ -1,10 +1,8 @@
-<div class="flat-booking-container mb-3">
+<%= link_to flat_path(booking.flat), class: "flat-booking-container mb-3 text-decoration-none text-reset" do %>
   <div class="flat-card d-flex">
     <% image_url = booking.flat.photos.attached? ? cl_image_path(booking.flat.photos[0].key, crop: :fill) : "https://img.freepik.com/photos-premium/touristes-campent-tente-pres-feu-dans-foret-pres-du-lac_327483-6608.jpg?semt=ais_items_boosted&w=740" %>
-
-    <div class="flat-preview" style="background-image: url('<%= image_url %>');"></div>
-
-    <div class="flat-booking-info p-3">
+    <div class="flat-preview me-3" style="background-image: url('<%= image_url %>');"></div>
+    <div class="flat-booking-info">
       <h6 class="mb-1"><%= booking.flat.name %></h6>
       <small>
         <%= booking.start_date.strftime("%b %d, %Y") %> - <%= booking.end_date.strftime("%b %d, %Y") %><br>
@@ -12,4 +10,4 @@
       </small>
     </div>
   </div>
-</div>
+<% end %>
