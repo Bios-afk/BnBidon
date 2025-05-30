@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root to: "flats#index"
 
-  resources :flats, expect: [:index], only: [:create, :show, :edit, :update, :destroy] do
+  resources :flats, expect: [:index], only: [:edit, :create, :show, :update, :destroy] do
     resources :bookings, only: [:create]
     resources :flat_reviews, only: [:create]
     resource :dashboard, only: [:show]
