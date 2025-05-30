@@ -9,8 +9,8 @@
   <div class="container text-center">
     <%= form_with url: root_path, method: :get, local: true, class: "d-flex justify-content-center mb-3" do %>
       <div class="input-group" style="max-width: 600px;">
-        <%= text_field_tag :query, params[:query], placeholder: "Search by address...", class: "form-control" %>
-        <%= submit_tag "Search", class: "btn btn-primary fw-bold text-white"  %>
+        <%= text_field_tag :query, params[:query], placeholder: "Rechercher par adresse...", class: "form-control" %>
+        <%= submit_tag "Rechercher", class: "btn btn-primary" %>
       </div>
     <% end %>
     <h1 class="mt-3">B&Bidon - Strass & Favelas - Low-cost lifestyle</h1>
