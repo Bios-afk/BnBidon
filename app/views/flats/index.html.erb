@@ -46,11 +46,14 @@
     <!-- MAP STICKY -->
     <div class="col-lg-4">
       <div class="position-sticky" style="top: 100px;">
-        <div id="map" style="width: 100%; height: calc(100vh - 120px); border-radius: 12px; overflow: hidden;"
-          data-controller="map"
-          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-          data-map-markers-value="<%= raw @markers.to_json %>">
-        </div>
+        <%= tag.div id: "map",
+            class: "w-100",
+            style: "height: calc(100vh - 120px); border-radius: 12px; overflow: hidden;",
+            data: {
+              controller: "map",
+              map_api_key_value: ENV['MAPBOX_API_KEY'],
+              map_markers_value: @markers
+            } %>
       </div>
     </div>
 
