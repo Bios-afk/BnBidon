@@ -103,8 +103,8 @@
       <div class="col-md-5" style="border-radius: 8px">
           <div class="card p-4 position-sticky d-none d-md-block"
           data-controller="price"
-          style="border-radius: 12px; top: 80px; z-index: 10;">
-          <h4 class="mb-3">Choose your period of stay</h4>
+          style="border-radius: 12px; top: 80px; z-index: 0;">
+          <h4 class="card-show mb-3">Choose your period of stay</h4>
           <!-- Messages d'erreur -->
           <% if @booking.errors.any? %>
             <div class="alert alert-danger">
@@ -129,7 +129,7 @@
                   action: "change->price#update"
                 }
               } %>
-            <%= f.button :submit, value: 'Book now', class: 'btn btn-primary w-100' %>
+            <%= f.button :submit, value: 'Book now', class: 'btn btn-primary w-100 fw-bold text-white' %>
           <% end %>
 
           <h6 class="d-flex justify-content-center"><br>No amount will be debited at this time</h6>

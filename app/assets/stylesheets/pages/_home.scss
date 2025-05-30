@@ -103,6 +103,7 @@ body {
   text-align: center;
 }
 
+
 .container-search h1 {
   margin-top: 20px;
   font-size: 2rem;
@@ -111,4 +112,16 @@ body {
 
 .input-group {
   z-index: 0;
+  .form-control {
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-top-left-radius: 8px !important;
+    border-bottom-left-radius: 8px !important;
+  }
+  .btn-primary {
+    border-top-right-radius: 8px !important;
+    border-bottom-right-radius: 8px !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+  }
 }
