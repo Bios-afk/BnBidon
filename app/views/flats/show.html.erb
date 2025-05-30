@@ -8,21 +8,61 @@
           <h1 class="mb-3"><%= @flat.name %></h1>
           <p><strong>Address:</strong> <%= @flat.address %></p>
           <p><strong>Price:</strong> <%= @flat.price %> € / nuit</p>
-          <p><strong>Description:</strong> <%= @flat.description %></p>
+          <p><strong>About this accommodation</strong> <%= @flat.description %></p>
         </div>
       </div>
 
       <!-- Colonne droite : Formulaire de réservation -->
       <div class="col-md-5">
-        <div class="card p-4" data-controller="price">
+        <div class="card p-4 position-sticky d-none d-md-block" data-controller="price">
+          <p><strong>Price:</strong> <%= @flat.price %> € / nuit</p>
           <h4 class="mb-3">Choose your period of stay</h4>
+
+          <!-- Messages d'erreur -->
+          <% if @booking.errors.any? %>
+            <div class="alert alert-danger">
+              <h5>Erreurs :</h5>
+              <ul>
+                <% @booking.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+
           <%= simple_form_for [@flat, @booking] do |f| %>
             <%= f.input :range_date,
-            as: :string,
-            input_html: { data: { controller: "datepicker", mode: "range" } } %>
-            <%= f.button :submit, value: 'Book', class: 'btn btn-primary w-100'%>
+              as: :string,
+              input_html: {
+                required: true,
+                data: {
+                  controller: "datepicker",
+                  mode: "range",
+                  price_target: "rangeDate",
+                  action: "change->price#update"
+                }
+              } %>
+            <%= f.button :submit, value: 'Réserver', class: 'btn btn-primary w-100' %>
           <% end %>
+
+          <h6 class="d-flex justify-content-center"><br>No amount will be debited at this time</h6>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carte en dessous -->
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="position-relative">
+        <%= tag.div id: "map",
+            class: "w-100",
+            style: "height: 400px; border-radius: 12px; overflow: hidden;",
+            data: {
+              controller: "map",
+              map_api_key_value: ENV['MAPBOX_API_KEY'],
+              map_markers_value: @markers
+            } %>
       </div>
     </div>
   </div>
