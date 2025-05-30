@@ -4,9 +4,6 @@ class Flat < ApplicationRecord
 
   has_many :bookings, dependent: :destroy
   has_many :flat_reviews
-  #ajout thibault
-  has_many_attached :photos
-  #
 
   geocoded_by :address
 

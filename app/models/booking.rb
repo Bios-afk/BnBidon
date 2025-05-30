@@ -8,6 +8,18 @@ class Booking < ApplicationRecord
   validates :end_date, presence: true
   validate :end_date_after_start_date
 
+  def en_attente_status?
+    status === "en_attente"
+  end
+
+  def validee_status?
+    status === "validee"
+  end
+
+  def refusee_status?
+    status === "refusee"
+  end
+
   private
 
   def end_date_after_start_date
