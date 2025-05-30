@@ -1,5 +1,5 @@
 class FlatsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:show]
+  skip_before_action :authenticate_user!, only: %i[show index]
 
   def index
     if params[:query].present?
